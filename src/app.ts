@@ -22,12 +22,16 @@ button.addEventListener(
     store.dispatch({
       type: 'ADD_TODO',
       payload,
-    })
+    });
     console.log(store.value);
     input.value = '';
   },
   false
 );
+
+const unsubscribe = store.subscibe((state) => {
+  renderTodos(state.todos.data);
+})
 
 todoList.addEventListener('click', function(event) {
   const target = event.target as HTMLButtonElement;
@@ -35,3 +39,7 @@ todoList.addEventListener('click', function(event) {
     console.log(target);
   }
 });
+
+destroy.addEventListener('click', unsubscribe);
+
+store.subscibe((store) => console.log('SUBSCRIBER:::', store));
