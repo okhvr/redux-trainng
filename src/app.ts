@@ -1,9 +1,12 @@
 import { renderTodos } from './utils';
+import * as fromStore from './store';
 
 const input = document.querySelector('input') as HTMLInputElement;
 const button = document.querySelector('button') as HTMLButtonElement;
 const destroy = document.querySelector('.unsubscribe') as HTMLButtonElement;
 const todoList = document.querySelector('.todos') as HTMLLIElement;
+const store = new fromStore.Store({}, { label: 'lalalaalalal', complete: false })
+console.log(store.value);
 
 button.addEventListener(
   'click',
